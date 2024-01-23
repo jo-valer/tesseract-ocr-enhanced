@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-This is the first method for effective Text Extraction from almost all types of backgrounds: Manual Trackbar. 
+The first method for effective Text Extraction from almost all types of backgrounds is Manual Trackbar. 
 The Track bar is used to apply the value for changing the 
 image threshold in runtime. Creating a track bar is creating a 
 progress bar for an image and adjusting various parameters. This 
@@ -12,6 +12,13 @@ us in creating a mask of a particular image and then extracting
 text from that image. This works in a precise manner for almost 
 all types of background images. It improves the efficiency of 
 Tesseract and thus allows us to extract text with ease and clarity.
+
+The second method for effective Text Extraction from almost all types of backgrounds is Automatic Trackbar.
+In this method, we take input from the user confirming the 
+shade of the background color. Once provided with the color, it 
+changes the parameters autonomously until it produces the 
+desired output. This method has more probability of producing 
+errors as compared to the manual method.
 """
 
 import cv2
@@ -28,13 +35,14 @@ DEBUG2 = True
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 """
-These functions are used to create a trackbar for the image and OCR the text in the image.
+Nothing function for trackbar
 """
-
 def nothing(x):
     pass
 
-
+"""
+Create manual trackbars for the image and OCR the text in the image.
+"""
 def manual_trackbar_ocr(image):
     if DEBUG1:
         print("DEBUG: manual_trackbar_ocr()")
@@ -108,7 +116,42 @@ def manual_trackbar_ocr(image):
                 
         cv2.destroyAllWindows()
 
+"""
+Automatically modify the values (lh, ls, lv, uh, us, uv) to OCR the text in the image.
+"""
+def auto_trackbar_ocr(image):
 
+    #TODO: implement this function
+    exit(0)
+
+    # Ask user for background color
+    background_color = input("Enter the background color (1 for Dark and 0 for Light, and 2 for both): ")
+    if background_color == "1":
+        pass
+    elif background_color == "0":
+        pass
+    else:
+        print("Invalid input!")
+        sys.exit(1)
+
+    # Convert BGR to HSV
+    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+    # define range of blue color in HSV
+    lower_blue = np.array([lh, ls, lv])
+    upper_blue = np.array([uh, us, uv])
+
+    # Threshold the HSV image to get only blue colors
+    mask = cv2.inRange(hsv, lower_blue, upper_blue)
+
+    # Bitwise-AND mask and original image
+    res = cv2.bitwise_and(image, image, mask=mask)
+
+    # OCR
+    text = pytesseract.image_to_string(res, lang='eng')
+    print("\033[92m {}\033[00m" .format(text))
+
+# MAIN
 if __name__ == "__main__":
     #DEBUG
     PARENT_DIR = os.path.dirname(os.path.dirname(os.path.realpath("FILEPATH")))
@@ -126,8 +169,17 @@ if __name__ == "__main__":
         # Construct the argument parser and parse the arguments
         ap = argparse.ArgumentParser()
         ap.add_argument("-i", "--image", required=True, help="Path to the image")
+        ap.add_argument("-a", "--auto", required=False, help="Automatic Trackbar")
         args = vars(ap.parse_args())
 
+        # Load the image
         image = cv2.imread(args["image"])
 
+        # Depending on the argument, call the respective function
+        if args["auto"] == "True":
+            auto_trackbar_ocr(image)
+        else:
+            manual_trackbar_ocr(image)
+
     manual_trackbar_ocr(image)
+    # auto_trackbar_ocr(image)
