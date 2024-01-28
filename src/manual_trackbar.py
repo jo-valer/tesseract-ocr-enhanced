@@ -109,6 +109,7 @@ def manual_trackbar_ocr(image):
                 cv2.imshow('image', res)
                 
                 # print text in green in console
+                print("Text after filtering: ")
                 print("\033[92m {}\033[00m" .format(text))  
 
             k = cv2.waitKey(1) & 0xFF
@@ -156,8 +157,9 @@ def auto_trackbar_ocr(image):
 if __name__ == "__main__":
     #DEBUG
     PARENT_DIR = os.path.dirname(os.path.dirname(os.path.realpath("FILEPATH")))
-    image_path = os.path.join(PARENT_DIR, "images", "001.png")
+    image_path = os.path.join(PARENT_DIR, "images", "005.jpg")
     # print text in red in console
+    print("Text before filtering: ")
     print("\033[91m {}\033[00m" .format(pytesseract.image_to_string(Image.open(image_path))))
 
     # Parent directory path
@@ -165,7 +167,7 @@ if __name__ == "__main__":
 
     if DEBUG2:
         print("DEBUG MODE: ON")
-        image = cv2.imread(os.path.join(PARENT_DIR, "images", "001.png"))
+        image = cv2.imread(os.path.join(PARENT_DIR, "images", "005.jpg"))
     else:
         # Construct the argument parser and parse the arguments
         ap = argparse.ArgumentParser()
