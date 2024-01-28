@@ -50,7 +50,7 @@ Create manual trackbars for the image and OCR the text in the image.
 def manual_trackbar_ocr(image):
     if DEBUG1:
         print("DEBUG: manual_trackbar_ocr()")
-        text = pytesseract.image_to_string(image, lang='eng')
+        text = pytesseract.image_to_string(image)
         # print text in red in console
         print("\033[91m {}\033[00m" .format(text))
 
