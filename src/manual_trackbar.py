@@ -28,11 +28,15 @@ import os
 import sys
 import argparse
 from PIL import Image
+import subprocess
 
 DEBUG1 = False
 DEBUG2 = True
 # Path to tesseract executable (in case it isn't in your PATH)
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+try:
+    subprocess.call(["tesseract"])
+except FileNotFoundError:
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 """
 Nothing function for trackbar
