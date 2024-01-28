@@ -89,18 +89,19 @@ def manual_trackbar_ocr(image):
             # Convert BGR to HSV
             hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-            # define range of blue color in HSV
-            lower_blue = np.array([lh, ls, lv])
-            upper_blue = np.array([uh, us, uv])
+            # define ranges in HSV
+            lower_bound = np.array([lh, ls, lv])
+            upper_bound = np.array([uh, us, uv])
 
-            # Threshold the HSV image to get only blue colors
-            mask = cv2.inRange(hsv, lower_blue, upper_blue)
+            # Threshold the HSV image
+            mask = cv2.inRange(hsv, lower_bound, upper_bound)
 
             # Bitwise-AND mask and original image
             res = cv2.bitwise_and(image, image, mask=mask)
 
             # OCR
             if (lh_i != lh) or (ls_i != ls) or (lv_i != lv) or (uh_i != uh) or (us_i != us) or (uv_i != uv):
+                #TODO: Grey-scale before OCR
                 text = pytesseract.image_to_string(res, lang='eng')
                 # print text in cv2 window
                 # font = cv2.FONT_HERSHEY_SIMPLEX
