@@ -32,6 +32,8 @@ import subprocess
 
 DEBUG1 = False
 DEBUG2 = True
+GREYSCALE = False
+
 # Path to tesseract executable (in case it isn't in your PATH)
 try:
     subprocess.call(["tesseract"])
@@ -93,7 +95,7 @@ def manual_trackbar_ocr(image):
             # Convert BGR to HSV
             hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-            # define ranges in HSV
+            # Define ranges in HSV
             lower_bound = np.array([lh, ls, lv])
             upper_bound = np.array([uh, us, uv])
 
@@ -105,8 +107,12 @@ def manual_trackbar_ocr(image):
 
             # OCR
             if (lh_i != lh) or (ls_i != ls) or (lv_i != lv) or (uh_i != uh) or (us_i != us) or (uv_i != uv):
-                #TODO: Grey-scale before OCR
-                text = pytesseract.image_to_string(res, lang='eng')
+                # OCR the text in the image (possibly greyscale)
+                if GREYSCALE:
+                    text = pytesseract.image_to_string(cv2.cvtColor(res, cv2.COLOR_BGR2GRAY))
+                else:
+                    text = pytesseract.image_to_string(res)
+                
                 # print text in cv2 window
                 # font = cv2.FONT_HERSHEY_SIMPLEX
                 # cv2.putText(res, text, (10, 500), font, 2, (255, 255, 255), 2, cv2.LINE_AA)
@@ -161,7 +167,7 @@ def auto_trackbar_ocr(image):
 if __name__ == "__main__":
     #DEBUG
     PARENT_DIR = os.path.dirname(os.path.dirname(os.path.realpath("FILEPATH")))
-    image_path = os.path.join(PARENT_DIR, "images", "005.jpg")
+    image_path = os.path.join(PARENT_DIR, "images", "012.jpg")
     # print text in red in console
     print("Text before filtering: ")
     print("\033[91m {}\033[00m" .format(pytesseract.image_to_string(Image.open(image_path))))
@@ -171,7 +177,7 @@ if __name__ == "__main__":
 
     if DEBUG2:
         print("DEBUG MODE: ON")
-        image = cv2.imread(os.path.join(PARENT_DIR, "images", "005.jpg"))
+        image = cv2.imread(image_path)
     else:
         # Construct the argument parser and parse the arguments
         ap = argparse.ArgumentParser()
