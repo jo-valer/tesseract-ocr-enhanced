@@ -4,10 +4,10 @@ Repo for our SIV Project
 ## Installation
 We used Python 3.12.0 and Tesseract-OCR 5.3.3. See requirements.txt for the required packages.
 
-## Src
-The src folder contains the source code for our project.
+## Methods
+The `methods` folder contains the different experiments of our project.
 There are different functionalities:
-- `manual_trackbar.py`: manually adjust the parameters (automatic trackbar will not be implemented)
+- `trackbar.py`: manual or automatic tresholding
 - `automatic_filtering.ipynb`: automatic filtering of the text through a specific pipeline
-
-At the moment, other .ipynb files are used for testing purposes only.
+- `squared_paper_ocr.ipynb`: OCR on squared paper
+- `squared_paper_shadow_removal.ipynb`: shadow removal on squared paper

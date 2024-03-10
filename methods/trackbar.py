@@ -27,6 +27,7 @@ import pytesseract
 import os
 import argparse
 import subprocess
+import sys
 
 DEBUG2 = True
 GREYSCALE = False
@@ -126,9 +127,6 @@ Automatically modify the values (lh, ls, lv, uh, us, uv) to OCR the text in the 
 """
 def auto_trackbar_ocr(image):
 
-    #TODO: implement this function
-    exit(0)
-
     # Ask user for background color
     background_color = input("Enter the background color (1 for Dark and 0 for Light, and 2 for both): ")
     if background_color == "1":
@@ -138,6 +136,9 @@ def auto_trackbar_ocr(image):
     else:
         print("Invalid input!")
         sys.exit(1)
+
+    #TODO: implement this function
+    exit(0)
 
     # Convert BGR to HSV
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
