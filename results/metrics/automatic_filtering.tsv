@@ -1,0 +1,11 @@
+input	text	baseline_text	method_text	ocr	baseline_dist	method_dist	u	baseline_accuracy	method_accuracy
+001.jpg	SNEHA PANDEY TSPDL	SNEHA PANDEY SS TSPDL Foe oe 	SNEHA PANDEY ~ TSPOL 	1	11	4	18	0.3888888888888889	0.7777777777777778
+002.jpg	SANTOSH SONAWANE Trig Security Manager	SANTOSH SONAWANE Trig 	 	1	16	37	38	0.5789473684210527	0.02631578947368421
+003.jpg	STIAMO RECLUTANDO JETN! Hai voglia di	Hal voglia di 	Hai voglia di Q. | 	1	26	30	37	0.2972972972972973	0.1891891891891892
+004.jpg	@jetn_trento JETN JETN www.jetn.it | info@jetn.it ENTRO IL 24 MARZO !	@jetn_trento JETN JETN www-.jetn.it | info@jetn.it ENTRO IL 24 MARZO! 	. ofe JETM ” rancjotmnl | tate fetaR ENTIROMIEZCIMAR ZONE) fy 	1	3	49	69	0.9565217391304348	0.2898550724637681
+005.jpg	ELEGOO UNO R3 PROJECT Basic Starter Kit	Basic Starter Kit 	PROJECT F Basic Starter (Ait 	1	23	19	39	0.41025641025641024	0.5128205128205128
+006.jpg	Offerta Lampo Kindle eBook in offerta solo per 24 ore	€Book in offer 	Book in offerta Solo per 24 ore a \ \ _ 	1	39	32	53	0.2641509433962264	0.39622641509433965
+007.jpg	SanDisk	 	\ MN ‘y 	1	7	8	7	0.0	-0.14285714285714285
+008.jpg	DOUGLAS ADAMS GUIDA GALATTICA per gli AUTOSTOPPISTI il ciclo completo	GALATTICA —pen glii— ev 4 ~ AUTOSTOPPISTI it ciclo completo accra” Se :SsehCUS oO SO 	"We, ae a X om 7 ,™ eet \ - oe c . aren: 7 ""on . ‘ - DSS x Le { x . \ Sy \ NN . ‘ \ NN 7, y ‘\\ AUTOSTOPPISTI 1 cicha completa. COTO ES A TRV SRT RS "	1	56	115	69	0.18840579710144928	-0.6666666666666666
+009.jpg	ABCD	 	 	1	4	4	4	0.0	0.0
+010.jpg	Scout CNGEI Siamo un'associazione scout laica, presente a Trento con 2 Gruppi (5 unità) che coinvolgono bambini dagli 8 fino a ragazzi di 19 anni. Abbiamo bisogno di adulti volontari: se hai piacere, per saperne di più, scannerizza il QR code	che coinvolgono bambini dat 8 elalall fino! a ragazzi di 19 anni. Abbiamo bisogno di adulti volontari: se hai | piacere, per saperne di piu, scannerizza il ¢¢~ \ QRcode Sl AU Wisi Soe 	a sagazzi di 9 anit. Abbiamo bisogno di ‘adulti volontari: se hai t piacere, per saperne di pit, scannerizza a sh s\ QRcode 	1	125	141	242	0.4834710743801653	0.41735537190082644
