@@ -129,6 +129,6 @@ def manual_trackbar_ocr(image):
 # MAIN
 if __name__ == "__main__":
     PARENT_DIR = os.path.dirname(os.path.dirname(os.path.realpath("FILEPATH")))
-    image_path = os.path.join(PARENT_DIR, "images", "001.png")
+    image_path = os.path.join(PARENT_DIR, "images", "001.jpg")
     image = cv2.imread(image_path)
     manual_trackbar_ocr(image)
