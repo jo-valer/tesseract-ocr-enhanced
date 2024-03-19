@@ -19,6 +19,10 @@ if len(tsv_files) == 0:
     print("No tsv files found in the directory of this script.")
     sys.exit(1)
 
+# If results.txt already exists, delete it
+if os.path.exists(os.path.join(DIRECTORY, 'results.txt')):
+    os.remove(os.path.join(DIRECTORY, 'results.txt'))
+
 for tsv_file in tsv_files:
     # Read the tsv file
     df = pd.read_csv(os.path.join(DIRECTORY, tsv_file), sep='\t')
@@ -26,7 +30,7 @@ for tsv_file in tsv_files:
     # Remove lines where ocr == 0
     df = df[df['ocr'] == 1]
 
-    if "trackbar" in tsv_file:
+    if tsv_file in ["manual_trackbar.tsv"]:
         # Compute the distance between the ground truth and the OCR result, and the distance between the ground truth and the baseline
         df['baseline_dist'] = df.apply(lambda row: distance(row['text'], row['baseline_text']), axis=1)
         df['method_dist'] = df.apply(lambda row: distance(row['text'], row['method_text']), axis=1)
@@ -39,8 +43,14 @@ for tsv_file in tsv_files:
     # Compute average accuracy for baseline and method
     avg_baseline_accuracy = df['baseline_accuracy'].mean()
     avg_method_accuracy = df['method_accuracy'].mean()
-    print(f"Average baseline accuracy for {tsv_file}: {avg_baseline_accuracy:.2f}")
-    print(f"Average method accuracy for {tsv_file}: {avg_method_accuracy:.2f}")
+    print(f"Average baseline accuracy for {tsv_file}: {avg_baseline_accuracy:.3f}")
+    print(f"Average method accuracy for {tsv_file}: {avg_method_accuracy:.3f}")
+
+    # Save also in results.txt
+    with open(os.path.join(DIRECTORY, 'results.txt'), 'a') as f:
+        f.write(f"Accuracy of {tsv_file.split('.')[0]}\n")
+        f.write(f"Baseline: {avg_baseline_accuracy:.3f}\n")
+        f.write(f"Our method: {avg_method_accuracy:.3f}\n\n")
 
     # Save the dataframe in a subfolder
     subfolder = os.path.join(DIRECTORY, 'metrics')
