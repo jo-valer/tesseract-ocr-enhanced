@@ -1,16 +1,16 @@
 Accuracy of automatic_filtering
-Baseline: 0.290
-Our method: 0.168
+Baseline: 0.299
+Our method: 0.197
 
 Accuracy of autonomous_trackbar
-Baseline: 0.290
-Our method: 0.336
+Baseline: 0.299
+Our method: 0.346
 
 Accuracy of manual_trackbar
-Baseline: 0.290
+Baseline: 0.299
 Our method: 0.666
 
 Accuracy of squared_paper_ocr
-Baseline: 0.042
-Our method: 0.595
+Baseline: 0.000
+Our method: 0.632
 

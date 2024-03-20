@@ -30,10 +30,13 @@ for tsv_file in tsv_files:
     # Remove lines where ocr == 0
     df = df[df['ocr'] == 1]
 
-    if tsv_file in ["manual_trackbar.tsv"]:
-        # Compute the distance between the ground truth and the OCR result, and the distance between the ground truth and the baseline
-        df['baseline_dist'] = df.apply(lambda row: distance(row['text'], row['baseline_text']), axis=1)
-        df['method_dist'] = df.apply(lambda row: distance(row['text'], row['method_text']), axis=1)
+    # Remove eventual spaces at the beginning and at the end of the text
+    df['baseline_text'] = df['baseline_text'].str.strip()
+    df['method_text'] = df['method_text'].str.strip()
+
+    # (Re)compute the distance between the ground truth and the OCR result, and the distance between the ground truth and the baseline
+    df['baseline_dist'] = df.apply(lambda row: distance(row['text'], row['baseline_text']), axis=1)
+    df['method_dist'] = df.apply(lambda row: distance(row['text'], row['method_text']), axis=1)
 
     # For each row of the dataframe, add a column computing the accuracy, defined as (u-method_dist)/u, where u is the length of the ground truth
     df['u'] = df['text'].apply(len)
