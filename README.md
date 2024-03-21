@@ -1,5 +1,5 @@
 # tesseract-ocr-enhanced
-Repo for our SIV Project
+Repo for our SIV Project (Giovanni Valer and Laurence Bonat).
 
 ## Installation
 We used Python 3.12.0 and Tesseract-OCR 5.3.3. See requirements.txt for the required packages.
