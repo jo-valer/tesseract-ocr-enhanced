@@ -12,13 +12,6 @@ us in creating a mask of a particular image and then extracting
 text from that image. This works in a precise manner for almost 
 all types of background images. It improves the efficiency of 
 Tesseract and thus allows us to extract text with ease and clarity.
-
-The second method for effective Text Extraction is Automatic Trackbar.
-In this method, we take input from the user confirming the 
-shade of the background color. Once provided with the color, it 
-changes the parameters autonomously until it produces the 
-desired output. This method has more probability of producing 
-errors as compared to the manual method.
 """
 
 import cv2
