@@ -82,33 +82,25 @@ def manual_trackbar_ocr(image):
         uv_i = uv
         uv = cv2.getTrackbarPos('UV', 'image')
 
-        # Convert BGR to HSV
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
         # Define ranges in HSV
         lower_bound = np.array([lh, ls, lv])
         upper_bound = np.array([uh, us, uv])
 
-        # Threshold the HSV image
         mask = cv2.inRange(hsv, lower_bound, upper_bound)
 
-        # Bitwise-AND mask and original image
         res = cv2.bitwise_and(image, image, mask=mask)
 
         # OCR
         if (lh_i != lh) or (ls_i != ls) or (lv_i != lv) or (uh_i != uh) or (us_i != us) or (uv_i != uv):
-            # OCR the text in the image (possibly greyscale)
             if GREYSCALE:
                 text = pytesseract.image_to_string(cv2.cvtColor(res, cv2.COLOR_BGR2GRAY))
             else:
                 text = pytesseract.image_to_string(res)
 
-            # print text in cv2 window
-            # font = cv2.FONT_HERSHEY_SIMPLEX
-            # cv2.putText(res, text, (10, 500), font, 2, (255, 255, 255), 2, cv2.LINE_AA)
             cv2.imshow('image', res)
 
-            # print text in green in console
             print("Text after filtering: ")
             print("\033[92m {}\033[00m".format(text))
 
@@ -119,7 +111,6 @@ def manual_trackbar_ocr(image):
     cv2.destroyAllWindows()
 
 
-# MAIN
 if __name__ == "__main__":
     PARENT_DIR = os.path.dirname(os.path.dirname(os.path.realpath("FILEPATH")))
     image_path = os.path.join(PARENT_DIR, "images", "001.jpg")
