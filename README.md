@@ -1,17 +1,17 @@
-# tesseract-ocr-enhanced
-Repo for our SIV Project (Giovanni Valer and Laurence Bonat).
+# Enhancing Tesseract OCR
+This is the repository for our _Signal, Image and Video_ course Project ([**Giovanni Valer**](https://github.com/jo-valer) and [**Laurence Bonat**](https://github.com/blauer4)).
 
 ## Installation
-We used Python 3.12.0 and Tesseract-OCR 5.3.3. See requirements.txt for the required packages.
+We used Python 3.12.0 and Tesseract-OCR 5.3.3. See <a href="https://github.com/jo-valer/tesseract-ocr-enhanced/blob/main/requirements.txt">requirements.txt</a> for the required packages.
 
 ## Methods
 The `methods` folder contains the different experiments of our project.
 There are different functionalities:
-- `manual_trackbar.py`: manual tresholding
-- `autonomous_trackbar.ipynb`: autonomous tresholding
+- `manual_trackbar.py`: trackbar in manual mode
+- `autonomous_trackbar.ipynb`: trackbar in autonomous mode
 - `automatic_filtering.ipynb`: automatic filtering of the text through a specific pipeline
-- `squared_paper_ocr.ipynb`: OCR on lined/squared paper
-- `lines_detection.ipynb`: methods to automatically detect if an image is a lined/squared paper
+- `lines_detection.ipynb`: automatically detect if a text is on lined/squared paper
+- `squared_paper_ocr.ipynb`: HTR on lined/squared paper
 
 ## Results
 In `results` are the results of all methods.
