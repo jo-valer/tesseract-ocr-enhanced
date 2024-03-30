@@ -1,6 +1,8 @@
 # Enhancing Tesseract OCR
 This is the repository for our _Signal, Image and Video_ course Project ([**Giovanni Valer**](https://github.com/jo-valer) and [**Laurence Bonat**](https://github.com/blauer4)).
 
+The Report is available [here](https://github.com/jo-valer/tesseract-ocr-enhanced/blob/main/SIV_Report_Valer_Bonat.pdf).
+
 ## Installation
 We used Python 3.12.0 and Tesseract-OCR 5.3.3. See <a href="https://github.com/jo-valer/tesseract-ocr-enhanced/blob/main/requirements.txt">requirements.txt</a> for the required packages.
 
